@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "Shopify Better Admin",
+    "description": "Adds extra features to the Shopify admin",
+    "version": "1.0",
+    "background": {
+        "service_worker": "./background.bundle.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://admin.shopify.com/store/*"],
+            "js": ["./content.bundle.js"],
+            "css": ["./css/polaris.css", "./css/custom.css"],
+            "all_frames": true
+        },
+        {
+            "matches": ["https://online-store-web.shopifyapps.com/*"],
+            "all_frames": true,
+            "js": ["./iframe.bundle.js"],
+            "css": ["./css/polaris.css", "./css/custom.css"]
+        }
+    ],
+    "permissions": ["webNavigation", "tabs", "storage", "downloads"]
+}
